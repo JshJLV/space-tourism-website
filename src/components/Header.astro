@@ -1,0 +1,103 @@
+---
+import Logo from "../assets/icons/Logo.astro";
+import IconHamburger from "../assets/icons/Icon-hamburger.astro";
+import IconClose from "../assets/icons/Icon-close.astro";
+---
+
+<script>
+  const currentPath = window.location.pathname;
+  const links = document.querySelectorAll("nav a");
+  links.forEach((link) => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add("active");
+    }
+  });
+
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const closeBtn = document.getElementById("close-btn");
+  const navbar = document.getElementById("navbar");
+
+  hamburgerBtn.addEventListener("click", () => {
+    navbar.classList.remove("show-nav");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    navbar.classList.add("show-nav");
+  });
+</script>
+
+<header
+  class="h-24 w-full flex justify-between items-center font-barlow px-6 md:px-0"
+>
+  <div class="md:pl-6">
+    <Logo />
+  </div>
+  <button
+    id="hamburger-btn"
+    class="xl:hidden py-1 px-1"
+    aria-label="hamburger button"
+  >
+    <IconHamburger />
+  </button>
+  <nav
+    id="navbar"
+    class="show-nav duration-300 bg-black text-white flex flex-col right-0 top-0 bottom-0 absolute px-6 w-64 gap-4 md:static md:right-auto md:top-auto md:bottom-auto md:flex md:flex-row md:items-center md:w-[830px] md:h-full md:justify-center"
+  >
+    <div
+      class="xl:w-[353px] 2xl:[473px] h-[1px] bg-white absolute opacity-0 invisible xl:opacity-50 xl:visible -translate-x-[570px]"
+    >
+    </div>
+    <button
+      id="close-btn"
+      class="mt-5 py-4 px-1 self-end md:hidden md:mt-0 md:self-start"
+      aria-label="close button"
+    >
+      <IconClose />
+    </button>
+    <ul class="flex gap-4 flex-col xl:flex-row">
+      <li>
+        <a
+          href="/"
+          class="xl:hover:border-b-2 xl:hover:border-b-white w-full block"
+          ><span class="m-1 font-bold">00</span>HOME</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="xl:hover:border-b-2 xl:hover:border-b-white w-full block"
+          ><span class="m-1 font-bold">01</span>DESTINATION</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="xl:hover:border-b-2 xl:hover:border-b-white w-full block"
+          ><span class="m-1 font-bold">02</span>CREW</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="xl:hover:border-b-2 xl:hover:border-b-white w-full block"
+          ><span class="m-1 font-bold">03</span>TECHNOLOGY</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  @media (min-width: 768px) {
+    .active {
+      border-bottom: 2px solid #ffffff;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .show-nav {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+</style>

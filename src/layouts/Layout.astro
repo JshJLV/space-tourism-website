@@ -1,23 +1,60 @@
 ---
-interface Props {
-	title: string;
-}
-
+import Header from "../components/Header.astro";
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
 </html>
 
+<style is:global>
+  body {
+    @apply flex flex-col min-h-screen;
+    background-image: url("../assets/home/background-home-mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @font-face {
+    font-family: "Bellefair";
+    src: url("/fonts/Bellefair-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Barlow Condensed";
+    src: url("/fonts/BarlowCondensed-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<!-- 
+#0B0D17 - BLUE
+#D0D6F9 - MORADO
+#FFFFFF - WHITE
+
+HEADING 1 - 150px
+HEADING 2 - 100px
+HEADING 3 - 56px
+HEADING 4 - 32px
+HEADING 5 - 28px CON 4.75 DE ESPACIADO ENTRE LETRAS
+SUBHEADING 1 - 28px
+SUBHEADING 2 - 14px CON 2.35 DE ESPACIADO
+TEXTO DE NAVBAR - 16px con 2.7 de espaciado 
+-->
