@@ -41,7 +41,7 @@ import IconClose from "../assets/icons/Icon-close.astro";
   </button>
   <nav
     id="navbar"
-    class="show-nav duration-300 bg-white/5 text-white flex flex-col right-0 top-0 bottom-0 absolute px-6 w-64 gap-4 md:static md:right-auto md:top-auto md:bottom-auto md:flex md:flex-row md:items-center md:w-[830px] md:h-full md:justify-center"
+    class="show-nav duration-300 bg-white/5 text-white backdrop-blur-2xl flex flex-col right-0 top-0 bottom-0 absolute px-6 w-64 gap-4 md:static md:right-auto md:top-auto md:bottom-auto md:flex md:flex-row md:items-center md:w-[830px] md:h-full md:justify-center"
   >
     <div
       class="xl:w-[353px] 2xl:[473px] h-[1px] bg-white absolute opacity-0 invisible xl:opacity-50 xl:visible -translate-x-[570px]"
@@ -88,10 +88,6 @@ import IconClose from "../assets/icons/Icon-close.astro";
 </header>
 
 <style>
-  #navbar {
-    backdrop-filter: blur(40.774227142333984px);
-  }
-
   @media (min-width: 768px) {
     .active {
       border-bottom: 2px solid #ffffff;
