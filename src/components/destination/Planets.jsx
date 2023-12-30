@@ -1,12 +1,8 @@
 import { useState } from "react";
-
-import EuropaImgPng from "../../assets/destination/image-europa.png";
+import "../../styles/global.css";
 import EuropaImgWebp from "../../assets/destination/image-europa.webp";
-import MarsImgPng from "../../assets/destination/image-mars.png";
 import MarsImgWebp from "../../assets/destination/image-mars.webp";
-import moonImgPng from "../../assets/destination/image-moon.png";
 import moonImgWebp from "../../assets/destination/image-moon.webp";
-import TitanImgPng from "../../assets/destination/image-titan.png";
 import TitanImgWebp from "../../assets/destination/image-titan.webp";
 
 export const Planets = () => {
@@ -15,7 +11,6 @@ export const Planets = () => {
 
   const planets = {
     moon: {
-      imgPng: moonImgPng.src,
       imgWebp: moonImgWebp.src,
       name: "moon",
       description: `See our planet as you’ve never seen it before. A perfect relaxing trip
@@ -26,7 +21,6 @@ export const Planets = () => {
       time: "3 days",
     },
     mars: {
-      imgPng: MarsImgPng.src,
       imgWebp: MarsImgWebp.src,
       name: "mars",
       description:
@@ -35,7 +29,6 @@ export const Planets = () => {
       time: "9 months",
     },
     europa: {
-      imgPng: EuropaImgPng.src,
       imgWebp: EuropaImgWebp.src,
       name: "europa",
       description:
@@ -44,7 +37,6 @@ export const Planets = () => {
       time: "3 years",
     },
     titan: {
-      imgPng: TitanImgPng.src,
       imgWebp: TitanImgWebp.src,
       name: "titan",
       description:
@@ -60,7 +52,7 @@ export const Planets = () => {
 
   return (
     <section className="text-white flex flex-col items-center w-11/12">
-      <figure className={`size-64 flex justify-center items-center`}>
+      <figure className={`size-64 flex justify-center items-center visible`}>
         <img
           src={planets[currentPlanet].imgWebp}
           className="size-44"
