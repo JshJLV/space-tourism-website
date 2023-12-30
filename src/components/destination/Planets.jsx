@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import EuropaImgPng from "../../assets/destination/image-europa.png";
 import EuropaImgWebp from "../../assets/destination/image-europa.webp";
 import MarsImgPng from "../../assets/destination/image-mars.png";
@@ -8,23 +10,73 @@ import TitanImgPng from "../../assets/destination/image-titan.png";
 import TitanImgWebp from "../../assets/destination/image-titan.webp";
 
 export const Planets = () => {
-  const buttons = ["Moon", "Mars", "Europa", "Titan"];
+  const [currentPlanet, setCurrentPlanet] = useState("moon");
+  const buttons = ["moon", "mars", "europa", "titan"];
+
+  const planets = {
+    moon: {
+      imgPng: moonImgPng.src,
+      imgWebp: moonImgWebp.src,
+      name: "moon",
+      description: `See our planet as you’ve never seen it before. A perfect relaxing trip
+      away to help regain perspective and come back refreshed. While you’re
+      there, take in some history by visiting the Luna 2 and Apollo 11
+      landing sites.`,
+      distance: "384, 400 km",
+      time: "3 days",
+    },
+    mars: {
+      imgPng: MarsImgPng.src,
+      imgWebp: MarsImgWebp.src,
+      name: "mars",
+      description:
+        "Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!",
+      distance: "225 MIL. km",
+      time: "9 months",
+    },
+    europa: {
+      imgPng: EuropaImgPng.src,
+      imgWebp: EuropaImgWebp.src,
+      name: "europa",
+      description:
+        "The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",
+      distance: "628 MIL. km",
+      time: "3 years",
+    },
+    titan: {
+      imgPng: TitanImgPng.src,
+      imgWebp: TitanImgWebp.src,
+      name: "titan",
+      description:
+        "The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
+      distance: "1.6 BIL. km",
+      time: "7 years",
+    },
+  };
+
+  const changePlanet = (planet) => {
+    setCurrentPlanet(planet);
+  };
 
   return (
     <section className="text-white flex flex-col items-center w-11/12">
-      <figure className="size-64 flex justify-center items-center">
+      <figure className={`size-64 flex justify-center items-center`}>
         <img
-          src={moonImgWebp.src}
+          src={planets[currentPlanet].imgWebp}
           className="size-44"
-          alt="Imagen de la luna"
+          alt={planets[currentPlanet].name}
         />
       </figure>
       <div className="flex gap-6">
         {buttons.map((button) => {
           return (
             <button
-              className="text-sm tracking-[2.3px] font-barlow text-[#D0D6F9] uppercase"
+              className={`text-sm tracking-[2.3px] font-barlow text-[#D0D6F9] uppercase pb-2 border-b-2 border-transparent${
+                button === currentPlanet ? "border-[#D0D6F9]" : ""
+              }`}
               key={button}
+              value={button}
+              onClick={() => changePlanet(button)}
             >
               {button}
             </button>
@@ -32,12 +84,11 @@ export const Planets = () => {
         })}
       </div>
       <article className="flex flex-col items-center py-8">
-        <h2 className="font-bellefair text-[56px] uppercase">Moon</h2>
+        <h2 className="font-bellefair text-[56px] uppercase">
+          {planets[currentPlanet].name}
+        </h2>
         <p className="text-center font-barlow text-[#D0D6F9]">
-          See our planet as you’ve never seen it before. A perfect relaxing trip
-          away to help regain perspective and come back refreshed. While you’re
-          there, take in some history by visiting the Luna 2 and Apollo 11
-          landing sites.
+          {planets[currentPlanet].description}
         </p>
       </article>
       <div className="w-11/12 h-[1px] bg-[#383B4B]"></div>
@@ -47,7 +98,7 @@ export const Planets = () => {
             Avg. Distance
           </p>
           <p className="font-bellefair text-[28px] uppercase text-center">
-            384, 400 km
+            {planets[currentPlanet].distance}
           </p>
         </div>
         <div className="flex flex-col gap-3">
@@ -55,7 +106,7 @@ export const Planets = () => {
             Est. travel time
           </p>
           <p className="font-bellefair text-[28px] uppercase text-center">
-            3 days
+            {planets[currentPlanet].time}
           </p>
         </div>
       </article>
